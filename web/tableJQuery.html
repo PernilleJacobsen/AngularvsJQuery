@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+     <div>Add Your Table made with JQuery here</div>
+     <a href='index.html'>Back</a>
+     <br>
+     <table>
+          <thead>
+              <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>email</th>
+              </tr>
+          </thead>
+          <tbody id="body">
+              
+          </tbody>
+      </table>
+     
+     <script>
+         
+         $(document).ready(function() {
+            
+            $.getJSON('http://localhost:8080/AngularJQuery2/api/person', function(res) {
+                createTable(res);
+            });
+            
+            function createTable(res) {
+                res.forEach(function(p) {
+                    var person = "<tr><td>" + p.id + "</td><td>" + p.name + "</td><td>" + p.email + "</td></tr>";
+                    $("#body").append(person);
+                });
+            }
+        
+         });
+         
+     </script>
+  </body>
+</html>
